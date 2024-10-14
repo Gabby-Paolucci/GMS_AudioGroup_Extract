@@ -22,11 +22,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-main(int argc, char** argv) {
+int main(int argc, char** argv) {
+	char* outname="extract";
 	//Check arguments
-	if (argc != 2) {
+	if (argc < 2) {
 		fprintf(stderr, "Usage: %s file\n", argv[0]);
 		exit(1);
+	} else if (argc==3) {
+		outname=argv[2];
 	}
 
 	char   *buf, fname[16];
@@ -62,7 +65,7 @@ main(int argc, char** argv) {
 		printf("File at 0x%08x (Size %d)... ", p, s2);
 		
 		//TODO: Figure out file formats by Magic Number
-		sprintf(fname, "extract%03d.ogg", n);
+		sprintf(fname, "%s%03d.ogg", outname,n);
 
 		//Extract the file
 		fp = fopen(fname, "wb");
