@@ -1,5 +1,5 @@
 CC     = gcc
-CFLAGS = --std=gnu89 -O3
+CFLAGS = --std=gnu89 -O3 -Wno-format -Wno-unused-result
 
 all: extract
 
